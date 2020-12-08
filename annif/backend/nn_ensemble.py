@@ -139,7 +139,7 @@ class NNEnsembleBackend(
                       kernel_initializer='zeros',
                       bias_initializer='zeros')(drop_hidden)
 
-        mean = Lambda(lambda x: K.mean(x, axis=2))(inputs)
+        mean = Lambda(lambda x: K.sum(x, axis=2))(inputs)
 
         predictions = Add()([mean, delta])
 
